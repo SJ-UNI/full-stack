@@ -14,8 +14,6 @@ document.getElementById('login-btn').addEventListener('click', function() {
         document.getElementById('user-username').textContent = username;
         document.getElementById('login-form').classList.add('hidden');
         document.getElementById('user-dashboard').classList.remove('hidden');
-        document.getElementById('post-error').classList.add('hidden');
-        document.getElementById('login-error').classList.add('hidden');
         usernameInput.value = ''; // Clear input
         passwordInput.value = ''; // Clear input
     } else {
@@ -38,17 +36,14 @@ document.getElementById('post-btn').addEventListener('click', function() {
             reactions: {
                 likes: new Set(),
                 dislikes: new Set(),
-                laughs: new Set(),
-                cries: new Set(),
+                comments: [],
             },
-            comments: []
         };
-        posts.push(post); // Save the post
-        displayPosts(); // Call function to display posts
+        posts.push(post);
+        displayPosts();
 
         document.getElementById('post-content').value = ''; // Clear textarea
         mediaInput.value = ''; // Clear file input
-        document.getElementById('post-error').classList.add('hidden');
     } else {
         document.getElementById('post-error').classList.remove('hidden');
     }
@@ -57,9 +52,9 @@ document.getElementById('post-btn').addEventListener('click', function() {
 // Display Posts Functionality
 function displayPosts() {
     const postList = document.getElementById('post-list');
-    postList.innerHTML = ''; // Clear existing posts
+    postList.innerHTML = '';
 
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
         const li = document.createElement('li');
         let mediaHTML = '';
 
@@ -81,12 +76,8 @@ function displayPosts() {
             <div class="reaction-buttons">
                 <button class="like-btn">❤️</button>
                 <button class="dislike-btn">💔</button>
-                <button class="laugh-btn">😂</button>
-                <button class="cry-btn">😢</button>
-                <span class="like-count">${post.reactions.likes.size}</span> Likes
-                <span class="dislike-count">${post.reactions.dislikes.size}</span> Dislikes
-                <span class="laugh-count">${post.reactions.laughs.size}</span> Laughs
-                <span class="cry-count">${post.reactions.cries.size}</span> Cries
+                <span>Likes: <span class="like-count">${post.reactions.likes.size}</span></span>
+                <span>Dislikes: <span class="dislike-count">${post.reactions.dislikes.size}</span></span>
             </div>
             <div class="comment-section">
                 <h4>Comments</h4>
@@ -107,23 +98,13 @@ function displayPosts() {
             displayPosts();
         });
 
-        li.querySelector('.laugh-btn').addEventListener('click', function() {
-            handleReaction(post, 'laughs');
-            displayPosts();
-        });
-
-        li.querySelector('.cry-btn').addEventListener('click', function() {
-            handleReaction(post, 'cries');
-            displayPosts();
-        });
-
         // Comment functionality
         li.querySelector('.comment-section button').addEventListener('click', function() {
             const commentInput = li.querySelector('.comment-section input');
             const commentText = commentInput.value.trim();
 
             if (commentText) {
-                post.comments.push(commentText);
+                post.reactions.comments.push({ text: commentText, user: currentUser });
                 commentInput.value = ''; // Clear input
                 displayPosts(); // Refresh posts to show new comment
             }
@@ -131,9 +112,9 @@ function displayPosts() {
 
         // Display comments
         const commentList = li.querySelector('.comment-list');
-        post.comments.forEach(comment => {
+        post.reactions.comments.forEach(comment => {
             const commentLi = document.createElement('li');
-            commentLi.textContent = comment;
+            commentLi.textContent = `${comment.user}: ${comment.text}`;
             commentList.appendChild(commentLi);
         });
 
