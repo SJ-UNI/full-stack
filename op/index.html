@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background: url('"https://krish-san.github.io/FSWD/ex/v627-aew-21-technologybackground.jpg') no-repeat center center fixed; /* Add your background image */
+    background-size: cover; /* Cover the entire viewport */
+    position: relative; /* Position for overlay */
+    color: #f0f0f0; /* Light text color for contrast */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Dark overlay */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.7); /* Dark overlay with transparency */
+    z-index: 1; /* Layer it below the text */
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    z-index: 1000;
+    padding: 70px;
+    box-sizing: border-box;
+}
+
+.content {
+    margin-top: 80px; /* Add margin to push content below the fixed heading */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px); /* Adjust height to fit the viewport minus the heading */
+    text-align: center;
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 15px 0;
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: #e6dfdf; /* Light color for links */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0c2ff3; /* Change color on hover */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: #28a745;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #28a745;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.button:active {
+    background-color: #1c7430;
+    border-color: #1b5e20;
+}
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>FULL STACK WEB DEVELOPMENT LAB EXPERIMENTS</h1>
+        <ul>
+            <button class="button" onclick="portfolio()"><li><a href="#" alt="portfolio">Portfolio</a></li></button><br>
+        </br>
+            <button class="button" onclick="todo()"><li><a href="#" alt="todo">To-do List</a></li></button></br>
+        </br>
+            <button class="button" onclick="microblog()"><li><a href="#" alt="microblog">Microblogging Application</a></li></button>
+         </br>
+        </br>   
+            <button class="button" onclick="Food_Delivery()"><li><a href="#" alt="fd">Food Delivery Website</a></li></button>
+        </ul>
+    </div>
+<script>
+    function portfolio(){
+        location.replace("https://krish-san.github.io/FSWD/ex1/index.html");
+    }
+    function todo(){
+        location.replace("https://krish-san.github.io/FSWD/ex2/index.html");
+    }
+     function microblog(){
+        location.replace("https://krish-san.github.io/FSWD/ex3/views/login.html");
+    }
+    function Food_Delivery(){
+        location.replace("https://krish-san.github.io/FSWD/ex4/index.html");
+    }
+</script>
+</body>
+</html>
+
+
+<!--<head>
+<title>My Page</title>
+<style>
+h1{
+ text-align:center;
+ color:red;
+ font-size:60px;
+}
+</style>
+</head>
+<body>
+<h1>welcome to my page</h1></br>  
+<ul>
+<li><a href="https://www.google.com" alt="googlenav">Google</a></li>
+</br>
+<li><a href="https://krish-san.github.io/FSWD/ex1/index.html" alt="portfolio">Portfolio</a></li>
+</br>
+<li><a href="https://krish-san.github.io/FSWD/ex2/new/index.html" alt="todo">To-do List</a></li>
+</ul>
+</body>-->
