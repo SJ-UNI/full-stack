@@ -1,59 +1,34 @@
-'use strict';
+const express = require('express');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/post');
 
+const app = express();
+const PORT = 3000;
 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static('public'));
 
-/**
- * add event on element
- */
+// MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/microblog', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
 
-const addEventOnElem = function (elem, type, callback) {
-  if (elem.length > 1) {
-    for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventListener(type, callback);
-    }
-  } else {
-    elem.addEventListener(type, callback);
-  }
-}
+// Routes
+app.use('/auth', authRoutes);
+app.use('/posts', postRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
-
-/**
- * navbar toggle
- */
-
-const navbar = document.querySelector("[data-navbar]");
-const navbarLinks = document.querySelectorAll("[data-nav-link]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-
-const toggleNavbar = function () {
-  navbar.classList.toggle("active");
-  this.classList.toggle("active");
-}
-
-addEventOnElem(navToggler, "click", toggleNavbar);
-
-const closeNavbar = function () {
-  navbar.classList.remove("active");
-  navToggler.classList.remove("active");
-}
-
-addEventOnElem(navbarLinks, "click", closeNavbar);
-
-
-
-/**
- * search bar toggle
- */
-
-const searchBar = document.querySelector("[data-search-bar]");
-const searchTogglers = document.querySelectorAll("[data-search-toggler]");
-const overlay = document.querySelector("[data-overlay]");
-
-const toggleSearchBar = function () {
-  searchBar.classList.toggle("active");
-  overlay.classList.toggle("active");
-  document.body.classList.toggle("active");
-}
-
-addEventOnElem(searchTogglers, "click", toggleSearchBar);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
