@@ -65,9 +65,12 @@ function displayPosts() {
 
         if (post.media) {
             if (post.mediaType.startsWith('image/')) {
-                mediaHTML = <img src="${post.media}" style="max-width: 100%; height: auto;" />;
+                mediaHTML = `<img src="${post.media}" style="max-width: 100%; height: auto;" />`;
             } else if (post.mediaType.startsWith('video/')) {
-                mediaHTML = <video controls style="max-width: 100%; height: auto;"><source src="${post.media}" type="${post.mediaType}">Your browser does not support the video tag.</video>;
+                mediaHTML = `<video controls style="max-width: 100%; height: auto;">
+                                <source src="${post.media}" type="${post.mediaType}">
+                                Your browser does not support the video tag.
+                              </video>`;
             }
         }
 
@@ -86,97 +89,63 @@ function displayPosts() {
                 <span class="cry-count">${post.reactions.cries.size}</span> Cries
             </div>
             <div class="comment-section">
-                <input type="text" class="comment-input" placeholder="Add a comment..." />
-                <button class="comment-btn">Comment</button>
-                <ul class="comments-list"></ul>
+                <h4>Comments</h4>
+                <input type="text" placeholder="Add a comment...">
+                <button>Add Comment</button>
+                <ul class="comment-list"></ul>
             </div>
         `;
-        postList.appendChild(li);
 
-        // Add event listeners for reactions and comments
-        addPostEventListeners(li, post);
-    });
-}
+        // Add event listeners for reactions
+        li.querySelector('.like-btn').addEventListener('click', function() {
+            handleReaction(post, 'likes');
+            displayPosts();
+        });
 
-// Add Event Listeners for Post Reactions and Comments
-function addPostEventListeners(postElement, post) {
-    const likeBtn = postElement.querySelector('.like-btn');
-    const dislikeBtn = postElement.querySelector('.dislike-btn');
-    const laughBtn = postElement.querySelector('.laugh-btn');
-    const cryBtn = postElement.querySelector('.cry-btn');
-    const likeCount = postElement.querySelector('.like-count');
-    const dislikeCount = postElement.querySelector('.dislike-count');
-    const laughCount = postElement.querySelector('.laugh-count');
-    const cryCount = postElement.querySelector('.cry-count');
-    const commentInput = postElement.querySelector('.comment-input');
-    const commentBtn = postElement.querySelector('.comment-btn');
-    const commentsList = postElement.querySelector('.comments-list');
+        li.querySelector('.dislike-btn').addEventListener('click', function() {
+            handleReaction(post, 'dislikes');
+            displayPosts();
+        });
 
-    likeBtn.addEventListener('click', () => toggleReaction(post, 'likes', likeCount));
-    dislikeBtn.addEventListener('click', () => toggleReaction(post, 'dislikes', dislikeCount));
-    laughBtn.addEventListener('click', () => toggleReaction(post, 'laughs', laughCount));
-    cryBtn.addEventListener('click', () => toggleReaction(post, 'cries', cryCount));
+        li.querySelector('.laugh-btn').addEventListener('click', function() {
+            handleReaction(post, 'laughs');
+            displayPosts();
+        });
 
-    commentBtn.addEventListener('click', () => {
-        const commentText = commentInput.value.trim();
-        if (commentText) {
-            post.comments.push(commentText);
-            displayComments(commentsList, post.comments);
-            commentInput.value = ''; // Clear input
-        }
-    });
-}
+        li.querySelector('.cry-btn').addEventListener('click', function() {
+            handleReaction(post, 'cries');
+            displayPosts();
+        });
 
-// Toggle Reaction Functionality
-function toggleReaction(post, reactionType, countElement) {
-    const userReactionSet = post.reactions[reactionType];
-    if (userReactionSet.has(currentUser)) {
-        userReactionSet.delete(currentUser); // Remove reaction
-    } else {
-        // Ensure the user can only react once
-        Object.keys(post.reactions).forEach(key => {
-            if (key !== reactionType) {
-                post.reactions[key].delete(currentUser);
+        // Comment functionality
+        li.querySelector('.comment-section button').addEventListener('click', function() {
+            const commentInput = li.querySelector('.comment-section input');
+            const commentText = commentInput.value.trim();
+
+            if (commentText) {
+                post.comments.push(commentText);
+                commentInput.value = ''; // Clear input
+                displayPosts(); // Refresh posts to show new comment
             }
         });
-        userReactionSet.add(currentUser); // Add reaction
-    }
-    countElement.textContent = userReactionSet.size; // Update count
-}
 
-// Display Comments Functionality
-function displayComments(commentsList, comments) {
-    commentsList.innerHTML = '';
-    comments.forEach(comment => {
-        const commentLi = document.createElement('li');
-        commentLi.textContent = comment;
-        commentsList.appendChild(commentLi);
+        // Display comments
+        const commentList = li.querySelector('.comment-list');
+        post.comments.forEach(comment => {
+            const commentLi = document.createElement('li');
+            commentLi.textContent = comment;
+            commentList.appendChild(commentLi);
+        });
+
+        postList.appendChild(li); // Add the new post to the list
     });
 }
 
-// Follow Functionality
-document.getElementById('follow-btn').addEventListener('click', function() {
-    const followUsername = document.getElementById('follow-username').value.trim();
-    if (followUsername && followUsername !== currentUser && !following.has(followUsername)) {
-        following.add(followUsername);
-        document.getElementById('follow-username').value = ''; // Clear input
-        displayFollowing();
-        document.getElementById('follow-error').classList.add('hidden');
-    } else {
-        document.getElementById('follow-error').classList.remove('hidden');
+// Reaction Handling Function
+function handleReaction(post, reactionType) {
+    if (currentUser) {
+        post.reactions[reactionType].add(currentUser);
     }
-});
-
-// Display Following List
-function displayFollowing() {
-    const followingList = document.getElementById('following-list');
-    followingList.innerHTML = ''; // Clear existing following list
-
-    following.forEach(user => {
-        const li = document.createElement('li');
-        li.textContent = user;
-        followingList.appendChild(li);
-    });
 }
 
 // Logout Functionality
@@ -184,16 +153,30 @@ document.getElementById('logout-btn').addEventListener('click', function() {
     currentUser = null;
     document.getElementById('user-dashboard').classList.add('hidden');
     document.getElementById('login-form').classList.remove('hidden');
-    posts.length = 0; // Clear posts
-    displayPosts(); // Refresh post display
-    following.clear(); // Clear following
-    displayFollowing(); // Refresh following display
 });
 
-// Show/Hide Password
+// Follow User Functionality
+document.getElementById('follow-btn').addEventListener('click', function() {
+    const followUsername = document.getElementById('follow-username').value.trim();
+
+    if (followUsername && followUsername !== currentUser && !following.has(followUsername)) {
+        following.add(followUsername);
+        document.getElementById('following-list').innerHTML += `<li>${followUsername}</li>`;
+        document.getElementById('follow-username').value = ''; // Clear input
+        document.getElementById('follow-error').classList.add('hidden');
+    } else {
+        document.getElementById('follow-error').classList.remove('hidden');
+    }
+});
+
+// Toggle Password Visibility
 document.getElementById('toggle-password').addEventListener('click', function() {
     const passwordInput = document.getElementById('password');
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
-    this.textContent = type === 'password' ? 'Show' : 'Hide';
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        this.textContent = 'Hide';
+    } else {
+        passwordInput.type = 'password';
+        this.textContent = 'Show';
+    }
 });
