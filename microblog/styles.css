@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef;
+    color: #495057;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+}
+
+.form-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 30px;
+    max-width: 400px;
+    transition: transform 0.3s;
+}
+
+.form-container:hover {
+    transform: translateY(-2px);
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: #495057;
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}
+
+.hidden {
+    display: none;
+}
+
+#feed {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#post-list {
+    list-style-type: none;
+}
+
+#post-list li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+#post-list li:hover {
+    transform: translateY(-2px);
+}
+s
+.reaction-buttons {
+    margin-top: 10px;
+}
+
+.reaction-buttons button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+
+.reaction-buttons button:hover {
+    transform: scale(1.2);
+}
+
+.comment-section {
+    margin-top: 10px;
+}
+
+.comment-section input {
+    width: calc(100% - 90px);
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.comment-section button {
+    width: 80px;
+}
