@@ -1,0 +1,70 @@
+let currentUser = null;
+const restaurants = [
+    { id: 1, name: "Pizza Place", menu: ["Margherita", "Pepperoni", "BBQ Chicken"] },
+    { id: 2, name: "Sushi Spot", menu: ["California Roll", "Spicy Tuna", "Salmon Sashimi"] },
+    { id: 3, name: "Burger Joint", menu: ["Cheeseburger", "Veggie Burger", "Chicken Sandwich"] }
+];
+
+const cart = [];
+
+// Load restaurants into the DOM
+function loadRestaurants() {
+    const restaurantList = document.getElementById('restaurant-list');
+    restaurants.forEach(restaurant => {
+        const restaurantDiv = document.createElement('div');
+        restaurantDiv.className = 'restaurant';
+        restaurantDiv.innerHTML = `<h3>${restaurant.name}</h3>`;
+        
+        restaurant.menu.forEach(item => {
+            const menuItem = document.createElement('button');
+            menuItem.innerText = item;
+            menuItem.addEventListener('click', () => addToCart(item));
+            restaurantDiv.appendChild(menuItem);
+        });
+
+        restaurantList.appendChild(restaurantDiv);
+    });
+}
+
+// Login functionality
+document.getElementById('login-btn').addEventListener('click', () => {
+    const usernameInput = document.getElementById('username');
+    currentUser = usernameInput.value.trim();
+
+    if (currentUser) {
+        alert(`Welcome, ${currentUser}!`);
+        document.getElementById('login-section').style.display = 'none';
+        loadRestaurants(); // Load restaurants on login
+    } else {
+        alert("Please enter your name");
+    }
+});
+
+// Add item to cart
+function addToCart(item) {
+    cart.push(item);
+    updateCart();
+}
+
+// Update cart display
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('p');
+        cartItem.innerText = item;
+        cartItems.appendChild(cartItem);
+    });
+}
+
+// Checkout functionality
+document.getElementById('checkout-btn').addEventListener('click', () => {
+    if (cart.length > 0) {
+        alert(`Thank you for your order, ${currentUser}!`);
+        cart.length = 0; // Clear cart
+        updateCart();
+    } else {
+        alert("Your cart is empty.");
+    }
+});
