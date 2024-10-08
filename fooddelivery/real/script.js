@@ -1,4 +1,4 @@
-import {foodItem} from './fooditem.js'
+import {foodItem} from './foodi.js'
 
 function displayItems(){
     var biryani= document.getElementById('biryani');
@@ -419,8 +419,8 @@ function totalAmount(){
         sum+= item.price;
     })
     document.getElementById('total-item').innerText= 'Total Item : ' + cartData.length;
-    document.getElementById('total-price').innerText= 'Total Price : $ ' + sum;
-    document.getElementById('m-total-amount').innerText= 'Total Price : $ ' + sum;
+    document.getElementById('total-price').innerText= 'Total Price : ₹' + sum;
+    document.getElementById('m-total-amount').innerText= 'Total Price : ₹' + sum;
 }
 
 document.getElementById('cart-plus').addEventListener('click',cartToggle);
