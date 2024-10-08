@@ -79,7 +79,7 @@ function displayItems(){
 
 
         var img= document.createElement('img');
-        img.src=item.img;
+        img.src=item.jpg;
 
         var itemName= document.createElement('p');
         itemName.setAttribute('id','item-name');
