@@ -77,7 +77,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 175,
-    img: 'fooddelivery/real//mughlai-biryani.jpg',
+    img: 'fooddelivery/real/mughlai-biryani.jpg',
     quantity: 1
 },
 {
