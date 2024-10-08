@@ -5,7 +5,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 300,
-    img: 'fooddelivery/real/Ambur-Chicken-Biryani1.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/Ambur-Chicken-Biryani1.jpg',
     quantity: 1
 },
 {
