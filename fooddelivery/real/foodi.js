@@ -14,7 +14,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 250,
-    img: 'fooddelivery/real/Chicken-Biryani-hyd.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/Chicken-Biryani-hyd.jpg',
     quantity: 1
 },
 {
