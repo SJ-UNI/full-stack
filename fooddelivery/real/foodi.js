@@ -23,7 +23,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 120,
-    img: 'fooddelivery/real/egg-biryani.jpeg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/egg-biryani.jpeg',
     quantity: 1
 },
 {
