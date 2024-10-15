@@ -86,7 +86,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 110,
-    img: 'images/chicken/Chicken_roast.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken_roast.jpg',
     quantity: 1
 },
 {
