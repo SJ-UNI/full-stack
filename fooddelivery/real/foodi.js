@@ -279,7 +279,7 @@ const foodItem= [
     category : 'chinese',
     rating : 4.3,
     price: 125,
-    img: 'images/chinese/ChickenManchurian.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/chinese/ChickenManchurian.jpg',
     quantity: 1
 },
 {
