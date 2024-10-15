@@ -122,7 +122,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 175,
-    img: 'images/chicken/Handi-chicken.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Handi-chicken.jpg',
     quantity: 1
 },
 {
