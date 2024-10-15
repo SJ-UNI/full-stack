@@ -288,7 +288,7 @@ const foodItem= [
     category : 'chinese',
     rating : 4.3,
     price: 100,
-    img: 'images/chinese/Chili-Chicken.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/chinese/Chili-Chicken.jpg',
     quantity: 1
 },
 {
