@@ -104,7 +104,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 125,
-    img: 'images/chicken/Chicken-do-Pyaza.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-do-Pyaza.jpg',
     quantity: 1
 },
 {
