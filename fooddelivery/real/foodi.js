@@ -131,7 +131,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 205,
-    img: 'images/chicken/Murgh-Musallam.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Murgh-Musallam.jpg',
     quantity: 1
 },
 {
