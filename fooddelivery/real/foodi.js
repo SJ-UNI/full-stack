@@ -32,7 +32,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 225,
-    img: 'fooddelivery/real/goan-fish-biryani.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/goan-fish-biryani.jpg',
     quantity: 1
 },
 {
@@ -41,7 +41,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 350,
-    img: 'fooddelivery/real/hyd-Mutton-Biryani.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/hyd-Mutton-Biryani.jpg',
     quantity: 1
 },
 {
@@ -50,7 +50,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 100,
-    img: 'fooddelivery/real/kamrupi-biryani.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/kamrupi-biryani.jpg',
     quantity: 1
 },
 {
@@ -59,7 +59,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 130,
-    img: 'fooddelivery/real/kashmiri.pulao.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/kashmiri.pulao.jpg',
     quantity: 1
 },
 {
@@ -68,7 +68,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 190,
-    img: 'fooddelivery/real/memonibiryani.png',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/memonibiryani.png',
     quantity: 1
 },
 {
@@ -77,7 +77,7 @@ const foodItem= [
     category : 'biryani',
     rating : 4.3,
     price: 175,
-    img: 'fooddelivery/real/mughlai-biryani.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/mughlai-biryani.jpg',
     quantity: 1
 },
 {
