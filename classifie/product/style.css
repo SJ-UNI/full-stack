@@ -1,1 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.add-product-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.add-product-form h2 {
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.add-product-form form input,
+.add-product-form form textarea,
+.add-product-form form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-product-form form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-product-form form button:hover {
+    background-color: #218838;
+}
+
+.filter {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.filter select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.product-listings h2 {
+    margin-bottom: 15px;
+    color: #17a2b8;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+.product-card h3 {
+    color: #007bff;
+}
+
+.product-card p {
+    margin-bottom: 10px;
+    color: #6c757d;
+}
+
+.product-card .price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.rating {
+    display: inline-block;
+    color: #ffc107;
+}
 
