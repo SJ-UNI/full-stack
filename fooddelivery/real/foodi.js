@@ -113,7 +113,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 120,
-    img: 'images/chicken/Chicken-Masala.jpeg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-Masala.jpeg',
     quantity: 1
 },
 {
