@@ -150,7 +150,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 100,
-    img: 'images/paneer/palak-paneer.jpg',
+    img: 'SJ-UNI/full-stack/fooddelivery/real/images/panner/palak-paneer.jpg',
     quantity: 1
 },
 {
