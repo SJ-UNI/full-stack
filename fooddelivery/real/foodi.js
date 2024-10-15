@@ -86,7 +86,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 110,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken_roast.jpg',
+    img: 'images/Chicken/Chicken_roast.jpg',
     quantity: 1
 },
 {
@@ -95,7 +95,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 100,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-Curry.jpg',
+    img: 'images/Chicken/Chicken-Curry.jpg',
     quantity: 1
 },
 {
@@ -104,7 +104,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 125,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-do-Pyaza.jpg',
+    img: 'images/Chicken/Chicken-do-Pyaza.jpg',
     quantity: 1
 },
 {
@@ -113,7 +113,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 120,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-Masala.jpeg',
+    img: 'images/Chicken/Chicken-Masala.jpeg',
     quantity: 1
 },
 {
@@ -122,7 +122,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 175,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Handi-chicken.jpg',
+    img: 'images/Chicken/Handi-chicken.jpg',
     quantity: 1
 },
 {
@@ -131,7 +131,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 205,
-    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Murgh-Musallam.jpg',
+    img: 'images/Chicken/Murgh-Musallam.jpg',
     quantity: 1
 },
 {
