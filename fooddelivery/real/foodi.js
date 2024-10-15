@@ -140,7 +140,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 155,
-    img: 'images/paneer/Matar-Paneer.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/Matar-Paneer.jpg',
     quantity: 1
 
 },
