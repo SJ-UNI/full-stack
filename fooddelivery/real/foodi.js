@@ -270,7 +270,7 @@ const foodItem= [
     category : 'chinese',
     rating : 4.3,
     price: 180,
-    img: 'images/chinese/cabbage-momos-.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/chinese/mmos.jpg',
     quantity: 5
 },
 {
