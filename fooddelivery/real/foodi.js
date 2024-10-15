@@ -95,7 +95,7 @@ const foodItem= [
     category : 'chicken',
     rating : 4.3,
     price: 100,
-    img: 'https://raw.githubusercontent.com/Ahmad528/shoppingsite/refs/heads/main/images/chicken/Chicken-Curry.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/Chicken-Curry.jpg',
     quantity: 1
 },
 {
