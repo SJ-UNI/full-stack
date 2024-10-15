@@ -315,7 +315,7 @@ const foodItem= [
     category : 'chinese',
     rating : 4.3,
     price: 100,
-    img: 'images/chinese/szechuan-chicken.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/chinese/szechuan-chicken.jpg',
     quantity: 1
 },
 {
