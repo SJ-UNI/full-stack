@@ -150,7 +150,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 100,
-    img: 'SJ-UNI/full-stack/fooddelivery/real/images/panner/palak-paneer.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/palak-paneer.jpg',
     quantity: 1
 },
 {
@@ -159,7 +159,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 155,
-    img: 'images/paneer/paneer-butter-masala.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/paneer-butter-masala.jpg',
     quantity: 1
 
 },
@@ -169,7 +169,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 125,
-    img: 'images/paneer/Paneer-Do-Pyaza.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/Paneer-Do-Pyaza.jpg',
     quantity: 1
 
 },
@@ -179,7 +179,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 150,
-    img: 'images/paneer/Paneer-Hyderabadi.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/Paneer-Hyderabadi.jpg',
     quantity: 1
 },
 {
@@ -188,7 +188,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 75,
-    img: 'images/paneer/paneer-lababdar.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/paneer-lababdar.jpg',
     quantity: 1
 },
 {
@@ -198,7 +198,7 @@ const foodItem= [
     category : 'paneer',
     rating : 4.3,
     price: 50,
-    img: 'images/paneer/shahi-paneer.jpg',
+    img: 'https://raw.githubusercontent.com/SJ-UNI/full-stack/refs/heads/main/fooddelivery/real/images/panner/shahi-paneer.jpg',
     quantity: 1
 },
 {
