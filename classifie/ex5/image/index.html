@@ -164,7 +164,7 @@
 </head>
 <body>
     <header>
-        <h1>Products App</h1>
+        <h1>Classified App</h1>
         <nav>
             <button id="view-buy">View Items for Sale</button>
             <button id="view-sell">Sell an Item</button>
@@ -254,118 +254,89 @@
         ];
 
         let cart = [];
-
-        document.getElementById('view-buy').addEventListener('click', () => {
+// Show sections
+        document.getElementById('view-buy').onclick = () => {
             document.getElementById('buy-section').classList.remove('hidden');
             document.getElementById('sell-section').classList.add('hidden');
-            document.getElementById('item-detail').classList.add('hidden');
-            document.getElementById('checkout-popup').classList.add('hidden');
             displayItems();
-        });
+        };
 
-        document.getElementById('view-sell').addEventListener('click', () => {
+        document.getElementById('view-sell').onclick = () => {
             document.getElementById('sell-section').classList.remove('hidden');
             document.getElementById('buy-section').classList.add('hidden');
-            document.getElementById('item-detail').classList.add('hidden');
-            document.getElementById('checkout-popup').classList.add('hidden');
-        });
+        };
 
-        document.getElementById('sell-form').addEventListener('submit', (event) => {
-            event.preventDefault();
-            const itemName = document.getElementById('item-name').value;
-            const itemCategory = document.getElementById('item-category').value;
-            const itemDescription = document.getElementById('item-description').value;
-            const itemImage = document.getElementById('item-image').files[0];
-            const itemPrice = document.getElementById('item-price').value;
-            const sellerContact = document.getElementById('seller-contact').value;
-
-            const newItem = {
-                name: itemName,
-                category: itemCategory,
-                description: itemDescription,
-                imageUrl: URL.createObjectURL(itemImage),
-                price: itemPrice,
-                contact: sellerContact
-            };
-
-            items.push(newItem);
-            document.getElementById('sell-form').reset();
-            alert("Item listed successfully!");
-        });
-
+        // Display items for sale
         function displayItems() {
             const itemList = document.getElementById('item-list');
-            itemList.innerHTML = '';
+            itemList.innerHTML = ''; // Clear existing items
+
             items.forEach((item, index) => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'item';
                 itemDiv.innerHTML = `
                     <img src="${item.imageUrl}" alt="${item.name}">
                     <h3>${item.name}</h3>
+                    <p>Category: ${item.category}</p>
                     <p>${item.description}</p>
                     <p>Price: ₹${item.price}</p>
                     <button onclick="addToCart(${index})">Add to Cart</button>
-                    <button onclick="viewItemDetail(${index})">View Details</button>
                 `;
                 itemList.appendChild(itemDiv);
             });
         }
 
+        // Add item to cart
         function addToCart(index) {
-            cart.push(items[index]);
+            const item = items[index];
+            cart.push(item);
             document.getElementById('cart-count').innerText = cart.length;
-            alert(`${items[index].name} added to cart!`);
+            alert(`${item.name} has been added to your cart.`);
         }
 
-        function viewItemDetail(index) {
-            const detailContent = document.getElementById('detail-content');
-            detailContent.innerHTML = `
-                <h3>${items[index].name}</h3>
-                <img src="${items[index].imageUrl}" alt="${items[index].name}">
-                <p>${items[index].description}</p>
-                <p>Price: ₹${items[index].price}</p>
-                <p>Contact: ${items[index].contact}</p>
-            `;
-            document.getElementById('item-detail').classList.remove('hidden');
-            document.getElementById('buy-section').classList.add('hidden');
-        }
-
-        document.getElementById('back-to-items').addEventListener('click', () => {
-            document.getElementById('item-detail').classList.add('hidden');
-            document.getElementById('buy-section').classList.remove('hidden');
-        });
+        // Checkout button functionality
         document.getElementById('checkout-button').addEventListener('click', () => {
-            console.log("Checkout button clicked"); // Debugging log
+            console.log("Checkout button clicked");
             if (cart.length === 0) {
                 alert("Your cart is empty!");
                 return;
             }
-            document.getElementById('checkout-popup').classList.remove('hidden');
+            document.getElementById('checkout-popup').style.display = 'flex'; // Show checkout popup
             displayOrderSummary();
         });
+
+        // Display order summary
         function displayOrderSummary() {
             const orderSummary = document.getElementById('order-summary');
             orderSummary.innerHTML = '';
             let totalAmount = 0;
-            cart.forEach((item) => {
-                const itemDiv = document.createElement('div');
-                itemDiv.innerHTML = `${item.name} - ₹${item.price}`;
-                orderSummary.appendChild(itemDiv);
+
+            cart.forEach(item => {
+                const itemSummary = document.createElement('div');
+                itemSummary.innerText = `${item.name} - ₹${item.price}`;
+                orderSummary.appendChild(itemSummary);
                 totalAmount += item.price;
             });
-            document.getElementById('total-amount').innerText = `Total Amount: ₹${totalAmount}`;
+
+            document.getElementById('total-amount').innerText = `Total: ₹${totalAmount}`;
         }
 
-        document.getElementById('payment-method').addEventListener('change', (event) => {
-            const cardDetails = document.getElementById('card-details');
-            cardDetails.classList.toggle('hidden', event.target.value === 'cash');
-        });
-
+        // Confirm order button functionality
         document.getElementById('confirm-order-button').addEventListener('click', () => {
             alert("Order confirmed! Thank you for your purchase.");
             cart = [];
-            document.getElementById('cart-count').innerText = 0;
-            document.getElementById('checkout-popup').classList.add('hidden');
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('checkout-popup').style.display = 'none'; // Hide checkout popup
+        });
+
+        // Handle payment method change
+        document.getElementById('payment-method').addEventListener('change', (event) => {
+            const cardDetails = document.getElementById('card-details');
+            if (event.target.value === 'card') {
+                cardDetails.classList.remove('hidden');
+            } else {
+                cardDetails.classList.add('hidden');
+            }
         });
     </script>
 </body>
