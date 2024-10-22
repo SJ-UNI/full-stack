@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifieds App</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f7f8f8, #acbb78), url('your-image-url.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(0, 123, 255, 0.85); /* Semi-transparent blue */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 25px;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #cart-info {
+            display: inline-block;
+            margin-left: 20px;
+            font-size: 18px;
+            color: white;
+        }
+
+        /* Main Section Styles */
+        main {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+        }
+
+        /* Item List Styles */
+        #item-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .item img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .item h3 {
+            font-size: 22px;
+            color: #333;
+        }
+
+        .item p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Checkout Styles */
+        #checkout-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #checkout-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Products App</h1>
+        <nav>
+            <button id="view-buy">View Items for Sale</button>
+            <button id="view-sell">Sell an Item</button>
+            <div id="cart-info">Cart: <span id="cart-count">0</span> items</div>
+            <button id="checkout-button">Checkout</button>
+        </nav>
+    </header>
+    
+    <main>
+        <div id="sell-section" class="hidden">
+            <h2>Sell an Item</h2>
+            <form id="sell-form">
+                <input type="text" id="item-name" placeholder="Item Name" required>
+                <input type="text" id="item-category" placeholder="Category" required>
+                <textarea id="item-description" placeholder="Description" required></textarea>
+                <input type="file" id="item-image" accept="image/*" required>
+                <input type="number" id="item-price" placeholder="Price" required>
+                <input type="text" id="seller-contact" placeholder="Your Contact Info" required>
+                <button type="submit">List Item</button>
+            </form>
+        </div>
+        
+        <div id="buy-section" class="hidden">
+            <h2>Items for Sale</h2>
+            <div id="item-list"></div>
+        </div>
+        
+        <div id="item-detail" class="hidden">
+            <button id="back-to-items">Back to Items</button>
+            <div id="detail-content"></div>
+        </div>
+
+        <div id="checkout-popup" class="hidden">
+            <div id="checkout-content">
+                <h2>Checkout</h2>
+                <div id="order-summary"></div>
+                <p id="total-amount"></p>
+                <label for="delivery-address">Delivery Address:</label>
+                <input type="text" id="delivery-address" placeholder="Enter your address" required>
+                <div>
+                    <label for="payment-method">Payment Method:</label>
+                    <select id="payment-method">
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
+                    </select>
+                </div>
+                <div id="card-details" class="hidden">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" placeholder="Enter your card number">
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" placeholder="MM/YY">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" placeholder="CVV">
+                </div>
+                <button id="confirm-order-button">Confirm Order</button>
+                <button onclick="document.getElementById('checkout-popup').style.display='none'">Cancel</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const items = [
+            {
+                name: "Royal enfield",
+                category: "Transport",
+                description: "A gently used bike in good condition.",
+                imageUrl: "classifie/ex5/image/image copy 2.png",
+                price: 135000,
+                contact: "dealer1@.com"
+            },
+            {
+                name: "Maruti Suzuki Alto 800 (2005)",
+                category: "Transport",
+                description: "Gas kit work and condition is also good",
+                imageUrl: "classifie/ex5/image/image copy.png",
+                price: 250,
+                contact: "Dealer2@.com"
+            },
+            {
+                name: "iPhone 14",
+                category: "Electronics",
+                description: "Almost new, used for a month.",
+                imageUrl: "classifie/ex5/image/image copy 3.png",
+                price: 80000,
+                contact: "Dealer3@.com"
+            }
+        ];
+
+        let cart = [];
+
+        document.getElementById('view-buy').addEventListener('click', () => {
+            document.getElementById('buy-section').classList.remove('hidden');
+            document.getElementById('sell-section').classList.add('hidden');
+            document.getElementById('item-detail').classList.add('hidden');
+            document.getElementById('checkout-popup').classList.add('hidden');
+            displayItems();
+        });
+
+        document.getElementById('view-sell').addEventListener('click', () => {
+            document.getElementById('sell-section').classList.remove('hidden');
+            document.getElementById('buy-section').classList.add('hidden');
+            document.getElementById('item-detail').classList.add('hidden');
+            document.getElementById('checkout-popup').classList.add('hidden');
+        });
+
+        document.getElementById('sell-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const itemName = document.getElementById('item-name').value;
+            const itemCategory = document.getElementById('item-category').value;
+            const itemDescription = document.getElementById('item-description').value;
+            const itemImage = document.getElementById('item-image').files[0];
+            const itemPrice = document.getElementById('item-price').value;
+            const sellerContact = document.getElementById('seller-contact').value;
+
+            const newItem = {
+                name: itemName,
+                category: itemCategory,
+                description: itemDescription,
+                imageUrl: URL.createObjectURL(itemImage),
+                price: itemPrice,
+                contact: sellerContact
+            };
+
+            items.push(newItem);
+            document.getElementById('sell-form').reset();
+            alert("Item listed successfully!");
+        });
+
+        function displayItems() {
+            const itemList = document.getElementById('item-list');
+            itemList.innerHTML = '';
+            items.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.innerHTML = `
+                    <img src="${item.imageUrl}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <p>Price: ₹${item.price}</p>
+                    <button onclick="addToCart(${index})">Add to Cart</button>
+                    <button onclick="viewItemDetail(${index})">View Details</button>
+                `;
+                itemList.appendChild(itemDiv);
+            });
+        }
+
+        function addToCart(index) {
+            cart.push(items[index]);
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(`${items[index].name} added to cart!`);
+        }
+
+        function viewItemDetail(index) {
+            const detailContent = document.getElementById('detail-content');
+            detailContent.innerHTML = `
+                <h3>${items[index].name}</h3>
+                <img src="${items[index].imageUrl}" alt="${items[index].name}">
+                <p>${items[index].description}</p>
+                <p>Price: ₹${items[index].price}</p>
+                <p>Contact: ${items[index].contact}</p>
+            `;
+            document.getElementById('item-detail').classList.remove('hidden');
+            document.getElementById('buy-section').classList.add('hidden');
+        }
+
+        document.getElementById('back-to-items').addEventListener('click', () => {
+            document.getElementById('item-detail').classList.add('hidden');
+            document.getElementById('buy-section').classList.remove('hidden');
+        });
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            document.getElementById('checkout-popup').classList.remove('hidden');
+            displayOrderSummary();
+        });
+
+        function displayOrderSummary() {
+            const orderSummary = document.getElementById('order-summary');
+            orderSummary.innerHTML = '';
+            let totalAmount = 0;
+            cart.forEach((item) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `${item.name} - ₹${item.price}`;
+                orderSummary.appendChild(itemDiv);
+                totalAmount += item.price;
+            });
+            document.getElementById('total-amount').innerText = `Total Amount: ₹${totalAmount}`;
+        }
+
+        document.getElementById('payment-method').addEventListener('change', (event) => {
+            const cardDetails = document.getElementById('card-details');
+            cardDetails.classList.toggle('hidden', event.target.value === 'cash');
+        });
+
+        document.getElementById('confirm-order-button').addEventListener('click', () => {
+            alert("Order confirmed! Thank you for your purchase.");
+            cart = [];
+            document.getElementById('cart-count').innerText = 0;
+            document.getElementById('checkout-popup').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
