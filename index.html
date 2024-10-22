@@ -6,37 +6,36 @@
     <title>My Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f1f2;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         h1 {
-            color: white;
-            font-size: 40px;
+            color: #ffffff;
+            font-size: 36px;
             margin: 0;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             text-align: center;
-            background-color: black;
+            background-color: #4a90e2;
             z-index: 1000;
-            padding: 70px;
+            padding: 50px;
             box-sizing: border-box;
         }
 
         .content {
-            margin-top: 80px; /* Add margin to push content below the fixed heading */
+            margin-top: 150px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: calc(100vh - 80px); /* Adjust height to fit the viewport minus the heading */
             text-align: center;
         }
 
@@ -48,7 +47,7 @@
 
         li {
             margin: 15px 0;
-            font-size: 24px;
+            font-size: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -56,18 +55,18 @@
 
         a {
             text-decoration: none;
-            color: #e6dfdf;
+            color: #333333;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #0c2ff3;
+            color: #4a90e2;
         }
 
         .button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin-left: 10px;
             font-size: 18px;
             color: white;
@@ -76,7 +75,7 @@
             text-decoration: none;
             border-radius: 5px;
             border: 2px solid #28a745;
-            transition: background-color 0.3s, border-color 0.3s;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .button:hover {
@@ -89,6 +88,16 @@
             border-color: #1b5e20;
         }
 
+        footer {
+            margin-top: auto;
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -98,24 +107,28 @@
             <button class="button" onclick="portfolio()">
                 <li><a href="#" alt="portfolio">Portfolio</a></li>
             </button>
-            <br></br>
+            <br><br>
             <button class="button" onclick="todo()">
                 <li><a href="#" alt="todo">To-do List</a></li>
             </button>
-            <br></br>
+            <br><br>
             <button class="button" onclick="microblog()">
                 <li><a href="#" alt="microblog">Microblogging Application</a></li>
             </button>
-            <br></br>
+            <br><br>
             <button class="button" onclick="fooddelivery()">
                 <li><a href="#" alt="fooddelivery">Food Delivery Website</a></li>
             </button>
-            <br></br>
-            <button class="button" onclick="classifed()">
+            <br><br>
+            <button class="button" onclick="classified()">
                 <li><a href="#" alt="classified">Classified Webpage</a></li>
             </button>
         </ul>
     </div>
+
+    <footer>
+        Developed by: Hariharan SJ
+    </footer>
 
     <script>
         function portfolio() {
@@ -133,6 +146,7 @@
         function fooddelivery() {
             window.open("https://sj-uni.github.io/full-stack/fooddelivery/real/index.html");
         }
+
         function classified() {
             location.replace("https://sj-uni.github.io/full-stack/classifie/ex5/index.html");
         }
