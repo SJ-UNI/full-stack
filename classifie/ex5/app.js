@@ -1,30 +1,28 @@
 const items = [
     {
-        name: "Royal enfield",
+        name: "Royal Enfield",
         category: "Transport",
         description: "A gently used bike in good condition.",
         imageUrl: "classifie/ex5/image/image copy 2.png",
         price: 135000,
-        contact: "dealer1@.com"
+        contact: "dealer1@example.com"
     },
     {
-        name: "maruti suzuki alto 800 (2005)",
+        name: "Maruti Suzuki Alto 800 (2005)",
         category: "Transport",
         description: "Gas kit work and condition is also good",
         imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image copy.png",
-        price: 250,
-        contact: "Dealer2@.com"
+        price: 250000,
+        contact: "dealer2@example.com"
     },
     {
         name: "Iphone 13",
         category: "Electronics",
-        description: "Available in All varinants Refurbished mobile with 1- year warranty on mobile.Includeing All Accessories.100% Authenticty suretyAll India Free Delivery",
+        description: "Available in all variants. Refurbished mobile with a 1-year warranty. Includes all accessories.",
         imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image.png",
         price: 23499,
-        contact: "Dealer2@.com"
+        contact: "dealer2@example.com"
     }
-
-    
 ];
 
 let cart = [];
@@ -53,7 +51,12 @@ document.getElementById('sell-form').onsubmit = (event) => {
     const price = parseFloat(document.getElementById('item-price').value);
     const contact = document.getElementById('seller-contact').value;
 
-    const imageUrl = URL.createObjectURL(imageFile);
+    if (!imageFile) {
+        alert('Please select an image for the item.');
+        return;
+    }
+
+    const imageUrl = URL.createObjectURL(imageFile);  // Create a URL for the uploaded image
     items.push({ name, category, description, imageUrl, price, contact });
     
     alert('Item listed successfully!');
@@ -70,7 +73,7 @@ function displayItems() {
         itemCard.className = 'item-card';
         itemCard.innerHTML = `
             <h3>${item.name}</h3>
-            <p>Category: ₹{item.category}</p>
+            <p>Category: ${item.category}</p>
             <p>Price: ₹${item.price.toFixed(2)}</p>
             <img src="${item.imageUrl}" alt="${item.name}" />
             <button onclick="viewDetails(${index})">View Details</button>
@@ -88,7 +91,7 @@ function viewDetails(index) {
         <h3>${item.name}</h3>
         <p><strong>Category:</strong> ${item.category}</p>
         <p><strong>Description:</strong> ${item.description}</p>
-        <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+        <p><strong>Price:</strong> ₹${item.price.toFixed(2)}</p>
         <p><strong>Seller Contact:</strong> ${item.contact}</p>
         <img src="${item.imageUrl}" alt="${item.name}" style="max-width: 300px;" />
         <button onclick="addToCart(${index})">Add to Cart</button>
@@ -113,7 +116,7 @@ function addToCart(index) {
 // Update cart information
 function updateCartInfo() {
     document.getElementById('cart-count').innerText = cart.length;
-};
+}
 
 // Handle checkout button
 document.getElementById('checkout-button').onclick = () => {
@@ -137,7 +140,7 @@ function displayOrderSummary() {
         total += item.price;
     });
 
-    totalAmount.innerText = `Total Amount:₹${total.toFixed(2)}`;
+    totalAmount.innerText = `Total Amount: ₹${total.toFixed(2)}`;
 }
 
 // Handle payment method selection
@@ -156,7 +159,7 @@ document.getElementById('confirm-order-button').onclick = () => {
         return;
     }
 
-    alert(`Order confirmed! Total: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}\nDelivery Address: ${deliveryAddress}\nPayment Method: ${paymentMethod}`);
+    alert(`Order confirmed! Total: ₹${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}\nDelivery Address: ${deliveryAddress}\nPayment Method: ${paymentMethod}`);
     cart = [];
     updateCartInfo();
     document.getElementById('checkout-popup').style.display = 'none'; // Hide pop-up
