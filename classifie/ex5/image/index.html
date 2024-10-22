@@ -334,8 +334,8 @@
             document.getElementById('item-detail').classList.add('hidden');
             document.getElementById('buy-section').classList.remove('hidden');
         });
-
         document.getElementById('checkout-button').addEventListener('click', () => {
+            console.log("Checkout button clicked"); // Debugging log
             if (cart.length === 0) {
                 alert("Your cart is empty!");
                 return;
@@ -343,7 +343,6 @@
             document.getElementById('checkout-popup').classList.remove('hidden');
             displayOrderSummary();
         });
-
         function displayOrderSummary() {
             const orderSummary = document.getElementById('order-summary');
             orderSummary.innerHTML = '';
