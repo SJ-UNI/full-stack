@@ -1,20 +1,28 @@
 const items = [
     {
-        name: "Used Bike",
+        name: "Royal enfield",
         category: "Transport",
         description: "A gently used bike in good condition.",
-        imageUrl: "cycle.jpeg",
-        price: 35000,
+        imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image copy 2.png",
+        price: 135000,
         contact: "dealer1@.com"
     },
     {
-        name: "Gaming Console",
-        category: "Electronics",
-        description: "A slightly used gaming console with games.",
-        imageUrl: "game.jpeg",
+        name: "maruti suzuki alto 800 (2005)",
+        category: "Transport",
+        description: "Gas kit work and condition is also good",
+        imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image copy.png",
         price: 250,
         contact: "Dealer2@.com"
     },
+    {
+        name: "Iphone 13",
+        category: "Electronics",
+        description: "Available in All varinants Refurbished mobile with 1- year warranty on mobile.Includeing All Accessories.100% Authenticty suretyAll India Free Delivery",
+        imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image.png",
+        price: 23499,
+        contact: "Dealer2@.com"
+    }
 
     
 ];
@@ -62,7 +70,7 @@ function displayItems() {
         itemCard.className = 'item-card';
         itemCard.innerHTML = `
             <h3>${item.name}</h3>
-            <p>Category: ${item.category}</p>
+            <p>Category: ₹{item.category}</p>
             <p>Price: $${item.price.toFixed(2)}</p>
             <img src="${item.imageUrl}" alt="${item.name}" />
             <button onclick="viewDetails(${index})">View Details</button>
@@ -125,11 +133,11 @@ function displayOrderSummary() {
     let total = 0;
 
     cart.forEach(item => {
-        orderSummary.innerHTML += `<p>${item.name} - $${item.price.toFixed(2)}</p>`;
+        orderSummary.innerHTML += `<p>${item.name} - ₹${item.price.toFixed(2)}</p>`;
         total += item.price;
     });
 
-    totalAmount.innerText = `Total Amount: $${total.toFixed(2)}`;
+    totalAmount.innerText = `Total Amount:₹${total.toFixed(2)}`;
 }
 
 // Handle payment method selection
