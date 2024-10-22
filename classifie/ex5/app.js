@@ -3,7 +3,7 @@ const items = [
         name: "Royal enfield",
         category: "Transport",
         description: "A gently used bike in good condition.",
-        imageUrl: "SJ-UNI/full-stack/classifie/ex5/image/image copy 2.png",
+        imageUrl: "classifie/ex5/image/image copy 2.png",
         price: 135000,
         contact: "dealer1@.com"
     },
@@ -71,7 +71,7 @@ function displayItems() {
         itemCard.innerHTML = `
             <h3>${item.name}</h3>
             <p>Category: ₹{item.category}</p>
-            <p>Price: $${item.price.toFixed(2)}</p>
+            <p>Price: ₹${item.price.toFixed(2)}</p>
             <img src="${item.imageUrl}" alt="${item.name}" />
             <button onclick="viewDetails(${index})">View Details</button>
         `;
