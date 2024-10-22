@@ -6,88 +6,88 @@
     <title>My Page</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
 
-h1 {
-    color: white;
-    font-size: 40px;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background-color: black;
-    z-index: 1000;
-    padding: 70px;
-    box-sizing: border-box;
-}
+        h1 {
+            color: white;
+            font-size: 40px;
+            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background-color: black;
+            z-index: 1000;
+            padding: 70px;
+            box-sizing: border-box;
+        }
 
-.content {
-    margin-top: 80px; /* Add margin to push content below the fixed heading */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 80px); /* Adjust height to fit the viewport minus the heading */
-    text-align: center;
-}
+        .content {
+            margin-top: 80px; /* Add margin to push content below the fixed heading */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px); /* Adjust height to fit the viewport minus the heading */
+            text-align: center;
+        }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-li {
-    margin: 15px 0;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        li {
+            margin: 15px 0;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-a {
-    text-decoration: none;
-    color: #e6dfdf;
-    font-weight: bold;
-    transition: color 0.3s;
-}
+        a {
+            text-decoration: none;
+            color: #e6dfdf;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-a:hover {
-    color: #0c2ff3;
-}
+        a:hover {
+            color: #0c2ff3;
+        }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-left: 10px;
-    font-size: 18px;
-    color: white;
-    background-color: #28a745;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    border: 2px solid #28a745;
-    transition: background-color 0.3s, border-color 0.3s;
-}
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-left: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #28a745;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
 
-.button:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
+        .button:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
 
-.button:active {
-    background-color: #1c7430;
-    border-color: #1b5e20;
-}
+        .button:active {
+            background-color: #1c7430;
+            border-color: #1b5e20;
+        }
 
     </style>
 </head>
@@ -95,52 +95,40 @@ a:hover {
     <div class="content">
         <h1>FULL STACK WEB DEVELOPMENT LAB EXPERIMENTS</h1>
         <ul>
-            <button class="button" onclick="portfolio()"><li><a href="#" alt="portfolio">Portfolio</a></li></button><br>
-        </br>
-            <button class="button" onclick="todo()"><li><a href="#" alt="todo">To-do List</a></li></button></br>
-        </br>
-            <button class="button" onclick="microblog()"><li><a href="#" alt="microblog">Microblogging Application</a></li></button>
-        </ul>
-         </br>
-            <button class="button" onclick="Food_Delivery()"><li><a href="#" alt="fooddelivery">Food Delivery Website</a></li></button>
+            <button class="button" onclick="portfolio()">
+                <li><a href="#" alt="portfolio">Portfolio</a></li>
+            </button>
+            <br><br>
+            <button class="button" onclick="todo()">
+                <li><a href="#" alt="todo">To-do List</a></li>
+            </button>
+            <br><br>
+            <button class="button" onclick="microblog()">
+                <li><a href="#" alt="microblog">Microblogging Application</a></li>
+            </button>
+            <br><br>
+            <button class="button" onclick="fooddelivery()">
+                <li><a href="#" alt="fooddelivery">Food Delivery Website</a></li>
+            </button>
         </ul>
     </div>
-<script>
-    function portfolio(){
-        location.replace("https://sj-uni.github.io/full-stack/sj.html");
-    }
-    function todo(){
-        location.replace("https://sj-uni.github.io/full-stack/todolist/index.html");
-    }
-    function microblog(){
-        location.replace("https://sj-uni.github.io/full-stack/microblog/blog/index.html");
-    }
-    function fooddelivery(){
-        window.open("https://sj-uni.github.io/full-stack/fooddelivery/real/index.html");
-    }
-    
-</script>
+
+    <script>
+        function portfolio() {
+            location.replace("https://sj-uni.github.io/full-stack/sj.html");
+        }
+
+        function todo() {
+            location.replace("https://sj-uni.github.io/full-stack/todolist/index.html");
+        }
+
+        function microblog() {
+            location.replace("https://sj-uni.github.io/full-stack/microblog/blog/index.html");
+        }
+
+        function fooddelivery() {
+            window.open("https://sj-uni.github.io/full-stack/fooddelivery/real/index.html");
+        }
+    </script>
 </body>
 </html>
-
-
-<!--<head>
-<title>My Page</title>
-<style>
-h1{
- text-align:center;
- color:red;
- font-size:60px;
-}
-</style>
-</head>
-<body>
-<h1>welcome to my page</h1></br>  
-<ul>
-<li><a href="https://www.google.com" alt="googlenav">Google</a></li>
-</br>
-<li><a href="https://krish-san.github.io/FSWD/ex1/index.html" alt="portfolio">Portfolio</a></li>
-</br>
-<li><a href="https://krish-san.github.io/FSWD/ex2/new/index.html" alt="todo">To-do List</a></li>
-</ul>
-</body>-->
