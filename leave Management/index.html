@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="login-section">
+            <h1>Employee Login</h1>
+            <form id="loginForm">
+                <label for="empId">Employee ID:</label>
+                <input type="text" id="empId" required>
+                
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p id="login-message"></p>
+        </div>
+
+        <!-- Leave Management Section -->
+        <div id="leave-section" style="display: none;">
+            <h1>Leave Management System</h1>
+            <div id="employee-info">
+                <p><b>Employee ID:</b> <span id="displayEmpId"></span></p>
+                <p><b>Email:</b> <span id="displayEmail"></span></p>
+            </div>
+            <div id="leave-balance">
+                <h2>Leave Balance</h2>
+                <p><b>Casual Leave:</b> <span id="casual-leave">10</span> days</p>
+                <p><b>Medical Leave:</b> <span id="medical-leave">5</span> days</p>
+            </div>
+            <div id="apply-leave">
+                <h2>Apply for Leave</h2>
+                <form id="leaveForm">
+                    <label for="leaveType">Leave Type:</label>
+                    <select id="leaveType" required>
+                        <option value="" disabled selected>Select Leave Type</option>
+                        <option value="casual">Casual Leave</option>
+                        <option value="medical">Medical Leave</option>
+                    </select>
+                    <label for="leaveDays">Number of Days:</label>
+                    <input type="number" id="leaveDays" min="1" required>
+                    <button type="submit">Apply</button>
+                </form>
+            </div>
+            <div id="message"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
