@@ -7,6 +7,8 @@ const questionBanks = {
 
 // LocalStorage keys
 const REGISTERED_USERS_KEY = "registeredUsers";
+const USER_ANSWERS_KEY = "userAnswers";
+const USER_QUESTIONS_KEY = "userQuestions";
 
 // Elements
 const registerPage = document.getElementById("registerPage");
@@ -36,6 +38,70 @@ function saveRegisteredUsers(users) {
     localStorage.setItem(REGISTERED_USERS_KEY, JSON.stringify(users));
 }
 
+// Load answers for the current user
+function loadUserAnswers(username) {
+    const userAnswers = JSON.parse(localStorage.getItem(USER_ANSWERS_KEY)) || {};
+    return userAnswers[username] || {};
+}
+
+// Save answers for the current user
+function saveUserAnswers(username, answers) {
+    const userAnswers = JSON.parse(localStorage.getItem(USER_ANSWERS_KEY)) || {};
+    userAnswers[username] = answers;
+    localStorage.setItem(USER_ANSWERS_KEY, JSON.stringify(userAnswers));
+}
+
+// Load questions for the current user
+function loadUserQuestions(username) {
+    const userQuestions = JSON.parse(localStorage.getItem(USER_QUESTIONS_KEY)) || {};
+    return userQuestions[username];
+}
+
+// Save questions for the current user
+function saveUserQuestions(username, questions) {
+    const userQuestions = JSON.parse(localStorage.getItem(USER_QUESTIONS_KEY)) || {};
+    userQuestions[username] = questions;
+    localStorage.setItem(USER_QUESTIONS_KEY, JSON.stringify(userQuestions));
+}
+
+// Function to generate random questions for a user
+function getRandomQuestions(username) {
+    const questions = questionBanks[username] || questionBanks["user1"];
+    return questions.sort(() => 0.5 - Math.random()).slice(0, 5);
+}
+
+// Load survey questions for a user
+function loadSurveyQuestions(username) {
+    let questions = loadUserQuestions(username);
+
+    // If no previous questions exist, generate new ones
+    if (!questions) {
+        questions = getRandomQuestions(username);
+        saveUserQuestions(username, questions);
+    }
+
+    const previousAnswers = loadUserAnswers(username);
+    questionsContainer.innerHTML = "";
+
+    questions.forEach((question, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+
+        const label = document.createElement("label");
+        label.textContent = `Q${index + 1}: ${question}`;
+        questionDiv.appendChild(label);
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = `answer${index + 1}`;
+        input.value = previousAnswers[`answer${index + 1}`] || ""; // Load previous answer if available
+        input.required = true;
+        questionDiv.appendChild(input);
+
+        questionsContainer.appendChild(questionDiv);
+    });
+}
+
 // Handle registration form submission
 registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -57,46 +123,21 @@ registerForm.addEventListener("submit", (e) => {
     }
 });
 
-// Function to generate random questions for a user
-function getRandomQuestions(username) {
-    const questions = questionBanks[username] || questionBanks["user1"];
-    return questions.sort(() => 0.5 - Math.random()).slice(0, 5);
-}
-
-// Load survey questions for a user
-function loadSurveyQuestions(username) {
-    const questions = getRandomQuestions(username);
-    questionsContainer.innerHTML = "";
-
-    questions.forEach((question, index) => {
-        const questionDiv = document.createElement("div");
-        questionDiv.classList.add("question");
-
-        const label = document.createElement("label");
-        label.textContent = `Q${index + 1}: ${question}`;
-        questionDiv.appendChild(label);
-
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = `answer${index + 1}`;
-        input.required = true;
-        questionDiv.appendChild(input);
-
-        questionsContainer.appendChild(questionDiv);
-    });
-}
-
 // Handle survey form submission
 surveyForm.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    // Collect answers
     const formData = new FormData(surveyForm);
     const answers = {};
     formData.forEach((value, key) => {
         answers[key] = value;
     });
 
-    console.log("Survey Answers for", currentUser, ":", answers);
-    alert("Thank you for completing the survey!");
+    // Save answers
+    saveUserAnswers(currentUser, answers);
+
+    alert("Thank you for completing the survey! Your answers have been saved.");
     surveyForm.reset();
 });
 
