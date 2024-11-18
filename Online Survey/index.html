@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Application with Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div id="registerPage">
+            <h1>Register</h1>
+            <form id="registerForm">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="button">Register</button>
+            </form>
+            <h2>Registered Users</h2>
+            <ul id="userList"></ul>
+        </div>
+
+        <div id="surveyPage" style="display: none;">
+            <h1>Welcome, <span id="currentUser"></span>!</h1>
+            <p>Answer the following survey questions:</p>
+            <form id="surveyForm">
+                <div id="questionsContainer"></div>
+                <button type="submit" class="button">Submit Answers</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
